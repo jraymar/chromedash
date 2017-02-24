@@ -1,0 +1,49 @@
+{
+    "name": "chromedash",
+    "description": "This extension shows a Google Image search result for the current page",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "*://*/*"
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "js": ["contentscript.js"],
+            "all_frames": true
+        }
+    ],
+    "browser_action": {
+        "default_icon": "tile.png",
+        "default_title": "Launch Dash"
+    },
+    "commands": {
+        "dash-search": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+D",
+                "mac": "Command+Shift+A"
+            },
+            "description": "Initiate Dash Search"
+        },
+        "_execute_browser_action": {
+            "suggested_key": {
+                "windows": "Ctrl+Shift+Y",
+                "mac": "Command+Shift+Y",
+                "chromeos": "Ctrl+Shift+U",
+                "linux": "Ctrl+Shift+J"
+            }
+        },
+        "_execute_page_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+E",
+                "windows": "Alt+Shift+P",
+                "mac": "Alt+Shift+P"
+            }
+        }
+    }
+}
