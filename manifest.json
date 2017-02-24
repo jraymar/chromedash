@@ -4,18 +4,17 @@
     "version": "1.0",
     "manifest_version": 2,
     "permissions": [
+        "<all_urls>",
         "tabs",
-        "activeTab",
-        "*://*/*"
+        "activeTab"
     ],
     "background": {
         "scripts": ["background.js"]
     },
     "content_scripts": [
         {
-            "matches": ["*://*/*"],
-            "js": ["contentscript.js"],
-            "all_frames": true
+            "matches": ["<all_urls>"],
+            "js": ["content_script.js"]
         }
     ],
     "browser_action": {

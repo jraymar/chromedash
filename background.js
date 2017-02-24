@@ -1,5 +1,12 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
-    console.log(tab);
+    chrome.tabs.sendMessage(
+        tab.id,
+        { "message" : "getSelection" },
+        {},
+        function(response) {
+            console.log("received response");
+        }
+    );
 });
 
 chrome.commands.onCommand.addListener(function(command) {
