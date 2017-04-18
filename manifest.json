@@ -1,13 +1,18 @@
 {
     "name": "chromedash",
-    "description": "This extension shows a Google Image search result for the current page",
+    "description": "This extension performs a search of the highlighted text in the browser within the dash application",
     "version": "1.0",
     "manifest_version": 2,
     "permissions": [
         "<all_urls>",
         "tabs",
-        "activeTab"
+        "activeTab",
+        "storage"
     ],
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+    },
     "background": {
         "scripts": ["background.js"]
     },
@@ -19,7 +24,8 @@
     ],
     "browser_action": {
         "default_icon": "tile.png",
-        "default_title": "Launch Dash"
+        "default_title": "Set Languages",
+        "default_popup": "options.html"
     },
     "commands": {
         "dash-search": {
@@ -28,21 +34,6 @@
                 "mac": "Command+Shift+A"
             },
             "description": "Initiate Dash Search"
-        },
-        "_execute_browser_action": {
-            "suggested_key": {
-                "windows": "Ctrl+Shift+Y",
-                "mac": "Command+Shift+Y",
-                "chromeos": "Ctrl+Shift+U",
-                "linux": "Ctrl+Shift+J"
-            }
-        },
-        "_execute_page_action": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+E",
-                "windows": "Alt+Shift+P",
-                "mac": "Alt+Shift+P"
-            }
         }
     }
 }
